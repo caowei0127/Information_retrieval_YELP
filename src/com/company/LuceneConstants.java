@@ -10,5 +10,5 @@ class LuceneConstants {
      * Define the paths for the data file and the lucene index
      */
     static final String DATA_FILE = "/Users/kiwi/Documents/NTU/Information Retrieval/yelp_dataset/business.json";
-    static final String INDEX_PATH = "/Users/kiwi/Documents/NTU/Information Retrieval/IR_Project/index";
+    static final String INDEX_PATH = "/Users/kiwi/IdeaProjects/Information_retrieval_YELP/index";
 }
