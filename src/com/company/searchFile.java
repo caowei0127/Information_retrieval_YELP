@@ -68,8 +68,8 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchBooleanQuery(String searchField1, String searchField2, String searchQuery1, String searchQuery2, int numHits) throws IOException, ParseException {
-        System.out.println("Scenario 2: boolean query search for keywords \"club\" in the field \"name\" and \"Las Vegas\" in the field \"city\" for the top 20 results");
+    ScoreDoc[] searchBooleanQuery(String searchField1, String searchField2, String searchQuery1, String searchQuery2, int numHits) {
+        System.out.println("Scenario 2: boolean query search for keywords \"club\" in the field \"name\" or \"Las Vegas\" in the field \"city\" for the top 20 results");
 
         ScoreDoc[] hits = null;
 
@@ -93,7 +93,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchBooleanQuery2(String searchField1, String searchField2, String searchField3, String searchQuery1, String searchQuery2, String searchQuery3, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchBooleanQuery2(String searchField1, String searchField2, String searchField3, String searchQuery1, String searchQuery2, String searchQuery3, int numHits) {
         System.out.println("Scenario 3: boolean query search for keywords \\\"5.0\\\" in the field \\\"stars\\\" and \\\"spas\\\" in the field \\\"categories\\\" and not \\\"glendale\\\" in the field \\\"city\\\" for the top 10 results");
 
         ScoreDoc[] hits = null;
@@ -123,8 +123,8 @@ public class searchFile {
     }
 
 
-    ScoreDoc[] searchPhraseQuery(String searchField, String searchQuery1, String searchQuery2, int numHits) throws IOException, ParseException {
-        System.out.println("Scenario 4: phraseQuery search for keywords \"Japanese Sushi\"");
+    ScoreDoc[] searchPhraseQuery(String searchField, String searchQuery1, String searchQuery2, int numHits) {
+        System.out.println("Scenario 4: phraseQuery search for keywords \"beer bar\"");
 
         ScoreDoc[] hits = null;
 
@@ -142,7 +142,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchRangeQuery(String searchField, double lowerBound, double upperBound, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchRangeQuery(String searchField, double lowerBound, double upperBound, int numHits) {
         System.out.println("Scenario 6: point rangeQuery search for stars");
         ScoreDoc[] hits = null;
         Query query = DoublePoint.newRangeQuery(searchField, lowerBound, upperBound);
@@ -157,7 +157,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchWildcard(String searchField, String searchQuery, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchWildcard(String searchField, String searchQuery, int numHits) {
         System.out.println("Scenario 7: wildcard search for any biz name containing undefined word  \"?bar\"");
         ScoreDoc[] hits = null;
         Term term = new Term(searchField, searchQuery);
@@ -203,7 +203,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchFuzzy(String searchField, String searchQuery, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchFuzzy(String searchField, String searchQuery, int numHits) {
         System.out.println("Scenario 10: fuzzy search for misspelled word \"barbacue\"");
         ScoreDoc[] hits = null;
         Term term = new Term(searchField, searchQuery);
@@ -219,7 +219,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchMultifield(String searchField1, String searchField2, String searchQuery1, String searchQuery2, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchMultifield(String searchField1, String searchField2, String searchQuery1, String searchQuery2, int numHits) throws ParseException {
         System.out.println("Scenario 11: search for name filed and address which contains \"club\" OR \"Valley\"");
         ScoreDoc[] hits = null;
         String[] fields = new String[]{searchField1, searchField2};
@@ -236,7 +236,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchQueryParser(String searchField, String searchQuery, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchQueryParser(String searchField, String searchQuery, int numHits) throws ParseException {
         System.out.println("Scenario 12: Use queryParse to implement wildcard query. City: Los \\Angel*");
         ScoreDoc[] hits = null;
         QueryParser queryParser = new QueryParser(searchField, new StandardAnalyzer());
@@ -252,7 +252,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchBoostBooleanQuery(String searchField1, String searchField2, String searchQuery1, String searchQuery2, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchBoostBooleanQuery(String searchField1, String searchField2, String searchQuery1, String searchQuery2, int numHits) {
         System.out.println("Scenario 20: Use boostQuery with boost and booleanQuery to add priority for the first query");
         ScoreDoc[] hits = null;
         Query q1 = new TermQuery(new Term(searchField1, searchQuery1));
@@ -273,7 +273,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchQueryParserRBooleanQuery(String searchField, String searchQuery, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchQueryParserRBooleanQuery(String searchField, String searchQuery, int numHits) throws ParseException {
         System.out.println("Scenario 19: Use queryParse to replace booleanQuery");
         ScoreDoc[] hits = null;
         QueryParser queryParser = new QueryParser(searchField, new StandardAnalyzer());
@@ -289,7 +289,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchByLatAndLng(double lat, double lng, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchByLatAndLng(double lat, double lng, int numHits) {
         System.out.println("Scenario 9: Search by latitude and longitude");
         ScoreDoc[] hits = null;
         Query query = LatLonPoint.newDistanceQuery("location", lat, lng, 1000);
@@ -304,7 +304,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchCharWithParser(String searchField, String searchQuery, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchCharWithParser(String searchField, String searchQuery, int numHits) throws ParseException {
         System.out.println("Scenario 13: use boosted character search with query parser: Yoga^4 club^3 fitness (^ means a boost)");
         ScoreDoc[] hits = null;
         QueryParser queryParser = new QueryParser(searchField, new StandardAnalyzer());
@@ -320,7 +320,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchFuzzyWithParser(String searchField, String searchQuery, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchFuzzyWithParser(String searchField, String searchQuery, int numHits) throws ParseException {
         System.out.println("Scenario 14: fuzzy search with query parser: saerch for wildcard cinem~");
         ScoreDoc[] hits = null;
         QueryParser queryParser = new QueryParser(searchField, new StandardAnalyzer());
@@ -336,7 +336,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchRangeWithParser(String searchField, String searchQuery, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchRangeWithParser(String searchField, String searchQuery, int numHits) throws ParseException {
         System.out.println("Scenario 15: character range search with query parser: [club TO spa} (including \"club\" but excluding \"spa\")");
         ScoreDoc[] hits = null;
         QueryParser queryParser = new QueryParser(searchField, new StandardAnalyzer());
@@ -352,7 +352,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchGroupingWithParser(String searchField, String searchQuery, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchGroupingWithParser(String searchField, String searchQuery, int numHits) throws ParseException {
         System.out.println("Scenario 16: character range search with query parser: (club OR bar) AND wine");
         ScoreDoc[] hits = null;
         QueryParser queryParser = new QueryParser(searchField, new StandardAnalyzer());
@@ -368,7 +368,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchPhraseWithSlop(String searchField, String searchQuery1, String searchQuery2, int slop, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchPhraseWithSlop(String searchField, String searchQuery1, String searchQuery2, int slop, int numHits) {
         System.out.println("Scenario 5: phrase search for \"name\" with slop 2 words");
         ScoreDoc[] hits = null;
         PhraseQuery.Builder builder = new PhraseQuery.Builder();
@@ -387,7 +387,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchProximityWithParser(String searchField, String searchQuery, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchProximityWithParser(String searchField, String searchQuery, int numHits) throws ParseException {
         System.out.println("Scenario 17: proximity search for \"name\" ");
         ScoreDoc[] hits = null;
         QueryParser queryParser = new QueryParser(searchField, new StandardAnalyzer());
@@ -403,7 +403,7 @@ public class searchFile {
         return hits;
     }
 
-    ScoreDoc[] searchBooleanWithParser(String searchField, String searchQuery, int numHits) throws IOException, ParseException {
+    ScoreDoc[] searchBooleanWithParser(String searchField, String searchQuery, int numHits) throws ParseException {
         System.out.println("Scenario 18: boolean parser search for \"name\"");
         ScoreDoc[] hits = null;
         QueryParser queryParser = new QueryParser(searchField, new StandardAnalyzer());

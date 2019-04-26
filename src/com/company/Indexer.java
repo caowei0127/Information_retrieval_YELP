@@ -44,11 +44,10 @@ class Indexer {
 //        Analyzer analyzer = new StandardAnalyzer();
 //        IndexWriterConfig cfg = new IndexWriterConfig(analyzer);
 //        cfg.setOpenMode(OpenMode.CREATE);
-//        cfg.setSimilarity(new BM25Similarity((float) 100.0, (float) 0.5));
-//        cfg.setRAMPerThreadHardLimitMB(1024);
-//        cfg.setRAMBufferSizeMB(1024);
-//        cfg.setMaxBufferedDocs(100);
-//        cfg.setMergePolicy(new TieredMergePolicy());
+//        cfg.setSimilarity(new BM25Similarity(100f, 0.5f));
+////        cfg.setRAMPerThreadHardLimitMB(1024);
+////        cfg.setRAMBufferSizeMB(1024);
+////        cfg.setMaxBufferedDocs(100);
 //        LogDocMergePolicy logDocMergePolicy = new LogDocMergePolicy();
 //        logDocMergePolicy.setMinMergeDocs(100);
 //        logDocMergePolicy.setMergeFactor(100); //the merge factor default value is 10
